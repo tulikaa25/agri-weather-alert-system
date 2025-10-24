@@ -1,10 +1,10 @@
 // backend/server/controllers/webhookController.js
 import { IntentAndLocationPrompt, WeatherSummaryPrompt } from '../utils/promptBuilder.js';
 import { callGeminiApi } from '../services/aiService.js';
-import { getWeatherData } from '../services/weatherService.js'; // Assumed dependency
-import { sendMessage } from '../services/messagingService.js'; // Assumed dependency
-import User from '../models/userModel.js'; // Assumed model
-import { fallbackMessage } from '../enums/fallbackMessage.js'; // Assumed enums
+import { getWeatherData } from '../services/weatherService.js'; 
+import { sendMessage } from '../services/messagingService.js'; 
+import User from '../models/userModel.js'; 
+import { fallbackMessage } from '../enums/fallbackMessage.js'; 
 
 export const webhookController = async (req, res) => {
     const phoneNumber = req.body.From;
@@ -13,8 +13,8 @@ export const webhookController = async (req, res) => {
     let user;
     let language = 'english';
 
-    console.log('Webhook received.'); 
-    console.log(`[DEBUG 1] User Message: ${messageBody}`);
+//     console.log('Webhook received.'); 
+//     console.log(`[DEBUG 1] User Message: ${messageBody}`);
 
     try {
         user = await User.findOne({ phoneNumber });
@@ -39,7 +39,7 @@ export const webhookController = async (req, res) => {
         try {
             parsedResponse = JSON.parse(cleanedResponseText);
         } catch (e) {
-            console.error(`[DEBUG 4] JSON Parsing Failed: ${e.message}. Raw Text: ${cleanedResponseText.substring(0, 50)}...`);
+//             console.error(`[DEBUG 2] JSON Parsing Failed: ${e.message}. Raw Text: ${cleanedResponseText.substring(0, 50)}...`);
             // If parsing fails, set parsedResponse to a default safe object to avoid further errors.
             parsedResponse = { intent: 'none', location: '', language: language };
         }
@@ -57,7 +57,7 @@ export const webhookController = async (req, res) => {
             user.language = language;
         }
         
-        console.log(`[DEBUG 5] Final Parsed Intent: ${intent} | Location: ${location}`);
+//         console.log(`[DEBUG 3] Final Parsed Intent: ${intent} | Location: ${location}`);
 
         switch (intent) {
             case 'get_weather':
@@ -86,7 +86,7 @@ export const webhookController = async (req, res) => {
 
             case 'update_location':
                 if (location) {
-                    // Apply update here, aligned with user's requirement
+                   
                     user.location = location;
                     responseText = fallbackMessage.getMessage('LOCATION_UPDATE_SUCCESS', language).replace('%s', location);
                 } else {
@@ -100,7 +100,7 @@ export const webhookController = async (req, res) => {
                 break;
         }
 
-        console.log(`[DEBUG 6] User object before save: ${JSON.stringify(user)}`);
+//         console.log(`[DEBUG 4] User object before save: ${JSON.stringify(user)}`);
         await user.save();
 
     } catch (e) {
