@@ -8,16 +8,7 @@ Many farmers, especially in rural areas, are not comfortable using smartphones o
 
 ---
 
-### 📊 _According to the _Down To Earth: State of India’s Environment in Figures 2020_ report:_
 
-#### 🌾 More than 50% of marginal farmers reported losing crops due to unseasonal rains, floods, or heatwaves
-
-#### 📡 **There’s a gap in weather communication**, especially for farmers without smartphones or internet access.
-
-### 🔍 Evidence from Report
-
-![img.png](docs/images/report.png)
-![img_1.png](docs/images/report2.png)
 
 ### ✅ Solution Overview
 
@@ -130,7 +121,7 @@ https://your-ngrok-url.ngrok.io/api/webhook/whatsapp
 
 ### 4. Join the sandbox by sending the join code (e.g., `join brave-owl`) to the provided WhatsApp number.
 
-![Twilio Sandbox Config](docs/images/sandbox-config.png)    
+
 
 ---
 
@@ -165,29 +156,29 @@ public void sendWeatherAlerts() {
 
 ### 1. Update Location (via WhatsApp or Call)
 
-![img_1.png](docs/images/img_1.png)
+
 
 ### 2. Language Friendly
 
 * #### In english
 
-![img_5.png](docs/images/img_5.png)
+
 
 * ##### In Hindi
 
-![img_2.png](docs/images/img_2.png)
+
 
 ### 3. Automatically Scheduled Alerts
 
 Alerts sent at set time daily.
-![img_3.png](docs/images/img_3.png)
+
 ---
 
 ## 📞 User View (Voice Call)
 
 ### 1. Call the Given Number
 
-![img.png](docs/images/img10.png)
+
 
 ### 2. Select the language choice
 
